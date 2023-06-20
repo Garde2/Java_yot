@@ -1,0 +1,6 @@
+1,Stafford,34,16
+2,Petrucco,2,5
+3,Kolobox,50,10
+4,LunaLawgud,100,1
+5,AsusPhone,199,4
+6,Airplane,45,5
