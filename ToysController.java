@@ -4,30 +4,30 @@ import java.util.logging.Logger;
 
 public class ToysController {
     
-    ToysRepository repositoryToy;
+    ToysRepository toys_repository;
     Logger logger;
 
-    public ToysController(ToysRepository repositoryToy, Logger logger) {
+    public ToysController(ToysRepository toys_repository, Logger logger) {
 
-        this.repositoryToy = repositoryToy;
+        this.toys_repository = toys_repository;
         this.logger = logger;
     }
 
 
     public List<Toys> readAllToys() {
 
-        return repositoryToy.getAllToys();
+        return toys_repository.getAllToys();
     }
 
     public void saveToy(Toys toy) throws Exception {
 
-        repositoryToy.createToy(toy);
+        toys_repository.createToy(toy);
         this.logger.info("Сохраним товар...");
     }
 
     public Toys readToy(String toyId) throws Exception {
 
-        List<Toys> toys = repositoryToy.getAllToys();
+        List<Toys> toys = toys_repository.getAllToys();
         Toys toy = toySearch(toyId, toys);
         this.logger.info("Найдем товары...");
         return toy;
@@ -45,7 +45,7 @@ public class ToysController {
 
     public void deleteToy(String toyId) {
 
-        List<Toys> toys = repositoryToy.getAllToys();
+        List<Toys> toys = toys_repository.getAllToys();
         List<Toys> newToys = new ArrayList<>();
 
         for (Toys toy : toys) {
@@ -60,26 +60,26 @@ public class ToysController {
                 newToys.add(toy);
             }
         }
-        repositoryToy.saveToys(newToys);
+        toys_repository.saveToys(newToys);
         this.logger.info("Удалить товар");
     }
 
     public void editToy(String toyId, Toys newToy) throws Exception {
 
-        List<Toys> toys = repositoryToy.getAllToys();
+        List<Toys> toys = toys_repository.getAllToys();
         Toys toy = toySearch(toyId, toys);
 
         toy.setName(newToy.getName());
         toy.setCount(newToy.getCount());
         toy.setDropRate(newToy.getDropRate());
-        repositoryToy.saveToys(toys);
+        toys_repository.saveToys(toys);
         this.logger.info("Редактировать товар");
     }
 
     public void addToy(Toys toy) {
 
         String toyId = toy.getId();
-        List<Toys> toys = repositoryToy.getAllToys();
+        List<Toys> toys = toys_repository.getAllToys();
         List<Toys> newToys = new ArrayList<>();
         Boolean added = false;
 
@@ -99,7 +99,7 @@ public class ToysController {
             toy.setCount(1);
             newToys.add(toy);
         }
-        repositoryToy.saveToys(newToys);
+        toys_repository.saveToys(newToys);
         this.logger.info("Удалить товар");
     }
 }

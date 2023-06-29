@@ -1,6 +1,5 @@
-1,Stafford,34,16
-2,Petrucco,2,5
-3,Kolobox,50,10
-4,LunaLawgud,100,1
-5,AsusPhone,199,4
-6,Airplane,45,5
+1,Petruccho,20,5
+2,Artemon,98,20
+3,Malvina,189,40
+4,Lisa,53,5
+5,Kot,87,8

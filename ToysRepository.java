@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ToysRepository {
 
-    ToysMapper Toy_mapper;
-    ToysFileOperation fileOperationToy;
+    ToysMapper toy_mapper;
+    ToysFileOperation toys_file_operation;
 
-    public ToysRepository(ToysFileOperation fileOperationToy, ToysMapper Toy_mapper) {
+    public ToysRepository(ToysFileOperation toys_file_operation, ToysMapper toy_mapper) {
 
-        this.Toy_mapper = Toy_mapper;
-        this.fileOperationToy = fileOperationToy;
+        this.toy_mapper = toy_mapper;
+        this.toys_file_operation = toys_file_operation;
     }
 
     public void createToy(Toys toy) {
@@ -36,19 +36,19 @@ public class ToysRepository {
         List<String> lines = new ArrayList<>();
 
         for (Toys item: toys) {
-            lines.add(Toy_mapper.map(item));
+            lines.add(toy_mapper.map(item));
         }
 
-        fileOperationToy.saveAllLines(lines);
+        toys_file_operation.saveAllLines(lines);
     }
 
     public List<Toys> getAllToys() {
 
-        List<String> lines = fileOperationToy.readAllLines();
+        List<String> lines = toys_file_operation.readAllLines();
         List<Toys> toys = new ArrayList<>();
         
         for (String line : lines) {
-            toys.add(Toy_mapper.map(line));
+            toys.add(toy_mapper.map(line));
         }
         return toys;
     }

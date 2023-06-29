@@ -1,3 +1,4 @@
-1,�����誠,1,5
-5,AsusPhone,1,4
-2,Petrucco,2,5
+3,Malvina,10,40
+2,Artemon,2,20
+5,Kot,1,8
+4,Lisa,2,5

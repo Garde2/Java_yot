@@ -10,19 +10,19 @@ public class Main {
         LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("logging.properties"));
         logger.info("Leggo!");
 
-        FileOperationToy fileOperationToys = new FileOperationToy("toys.txt", logger);
-        FileOperationToy fileOperationPrizeToys = new FileOperationToy("PrizeToys.txt", logger);
-        FileOperationToy fileOperationGivenOutPrizeToys = new FileOperationToy("GivenOutPrizeToys.txt", logger);
+        ToysFileOperation toys_file_operation = new ToysFileOperation("toys.txt", logger);
+        ToysFileOperation toys_in_game_file_operation = new ToysFileOperation("ToysInGame.txt", logger);
+        ToysFileOperation toysNotinGamefileoperation = new ToysFileOperation("ToysNotinGame.txt", logger);
 
-        RepositoryToy repositoryToys = new RepositoryToy(fileOperationToys, new MapperToy());
-        RepositoryToy repositoryPrizeToys = new RepositoryToy(fileOperationPrizeToys, new MapperToy());
-        RepositoryToy repositoryGivenOutPrizeToys = new RepositoryToy(fileOperationGivenOutPrizeToys, new MapperToy());
+        ToysRepository toys_repository = new ToysRepository(toys_file_operation, new ToysMapper());
+        ToysRepository toysinGame_repository = new ToysRepository(toys_in_game_file_operation, new ToysMapper());
+        ToysRepository toysNotinGame_repository = new ToysRepository(toysNotinGamefileoperation, new ToysMapper());
 
-        ControllerToy controllerToys = new ControllerToy(repositoryToys, logger);
-        ControllerToy controllerPrizeToys = new ControllerToy(repositoryPrizeToys, logger);
-        ControllerToy controllerGivenOutPrizeToy = new ControllerToy(repositoryGivenOutPrizeToys, logger);
+        ToysController toys_controller = new ToysController(toys_repository, logger);
+        ToysController toys_in_game = new ToysController(toysinGame_repository, logger);
+        ToysController toys_not_in_game = new ToysController(toysNotinGame_repository, logger);
         
-        ViewToy view = new ViewToy(controllerToys, controllerPrizeToys, controllerGivenOutPrizeToy, logger);
+        ToysView view = new ToysView(toys_controller, toys_in_game, toys_not_in_game, logger);
         view.run();
 
     }
